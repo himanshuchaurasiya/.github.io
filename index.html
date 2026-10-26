@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fareeha Batool – WordPress & Shopify Developer</title>
+<meta name="description" content="Portfolio of Fareeha Batool, a WordPress and Shopify developer and designer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CHANGE COLORS HERE ===== */
+:root{
+  --bg:#0B1220;        /* page background */
+  --card:#121B2E;      /* card background */
+  --card2:#18233B;     /* hover / tiles */
+  --line:#223051;      /* borders */
+  --text:#E6ECF8;      /* main text */
+  --muted:#93A1BF;     /* secondary text */
+  --accent:#22D3A6;    /* main accent (mint) */
+  --accent2:#7C8CFF;   /* second accent (indigo) */
+  --on-accent:#06251D; /* text on accent buttons */
+  --font:"Poppins","Segoe UI",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--font);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+.title{text-align:center;margin:0 0 8px;font-size:clamp(1.9rem,4vw,2.5rem);font-weight:700;letter-spacing:-.01em}
+.kicker{text-align:center;color:var(--accent);font-weight:500;margin:0 0 6px}
+.sub{text-align:center;color:var(--muted);max-width:56ch;margin:0 auto 40px}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:.9rem}
+.links{display:flex;gap:22px;align-items:center;font-size:.9rem;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:.9rem;padding:9px 18px;border-radius:999px;border:0;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);width:100%;text-align:center}
+.btn.ghost:hover{background:var(--accent);color:var(--on-accent)}
+
+/* hero */
+.hero{text-align:center;padding:96px 0 72px}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.15;margin:8px 0 18px;font-weight:700;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:60ch;margin:0 auto 32px;color:var(--muted)}
+.find{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.find a{width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-size:.8rem;font-weight:600;color:var(--accent)}
+.find a:hover{border-color:var(--accent)}
+.small{font-size:.8rem;color:var(--muted);margin:0 0 10px}
+.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.82rem}
+
+/* cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s}
+.card:hover{border-color:var(--accent)}
+.ico{width:44px;height:44px;border-radius:12px;background:var(--card2);color:var(--accent);display:grid;place-items:center;font-weight:700;margin-bottom:14px}
+.card h3{margin:0 0 8px;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.92rem}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 10px;text-align:center;font-size:.85rem;font-weight:500}
+.skill b{display:grid;place-items:center;width:42px;height:42px;margin:0 auto 10px;border-radius:12px;background:var(--card2);color:var(--accent2);font-size:.85rem}
+
+/* resume */
+.resume{display:grid;grid-template-columns:1fr 1fr;gap:56px;position:relative}
+.resume::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(var(--accent),transparent)}
+.col h3{font-size:1.4rem;margin:0 0 20px}
+.item{margin-bottom:18px}
+.item .row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.item h4{margin:0;font-size:1rem}
+.date{font-size:.78rem;color:var(--accent);background:var(--card2);border-radius:999px;padding:2px 12px;white-space:nowrap}
+.item .org{color:var(--accent2);font-size:.85rem;margin:0 0 6px}
+
+/* projects */
+.cat{display:flex;align-items:center;gap:10px;font-size:1.3rem;margin:48px 0 20px}
+.cat::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--accent)}
+.proj{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.thumb{aspect-ratio:16/9;background-size:cover;background-position:top;display:grid;place-items:center;font-weight:700;font-size:1.3rem;color:rgba(255,255,255,.85);text-align:center;padding:10px}
+.body{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.badge{align-self:flex-start;font-size:.7rem;font-weight:600;background:var(--card2);color:var(--accent);border-radius:6px;padding:1px 9px}
+.body h3{margin:2px 0 0;font-size:1.02rem}
+.body .tag{font-size:.78rem;color:var(--accent2);margin:0}
+.body p{font-size:.85rem;color:var(--muted);margin:0 0 12px;flex:1}
+
+/* footer */
+footer{border-top:1px solid var(--line);text-align:center;padding:48px 0 40px;color:var(--muted);font-size:.9rem}
+footer h2{color:var(--text);margin:0 0 4px}
+footer .role{color:var(--accent);margin:0 0 14px}
+footer a{color:var(--text)}
+
+@media (max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}.skills{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){
+  .links a:not(.btn){display:none}
+  .grid3{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}
+  .resume{grid-template-columns:1fr;gap:32px}.resume::before{display:none}
+  section{padding:56px 0}.hero{padding:64px 0 48px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home"><span class="avatar">F</span>Fareeha</a>
+    <nav class="links" aria-label="Main">
+      <a href="#home">Home</a><a href="#features">Features</a><a href="#skills">Skills</a><a href="#resume">Resume</a><a href="#projects">Projects</a>
+      <a class="btn" href="cv.pdf" download>Download CV</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <div class="container hero">
+    <p class="kicker">Welcome to my world</p>
+    <h1>Hi, I’m <em>Fareeha Batool</em> a Developer.</h1>
+    <p>I’m a skilled web developer and designer with 2 years of experience creating custom, responsive, and user-friendly websites across WordPress, Shopify, Wix, and Webflow.</p>
+    <p class="small">Find me on</p>
+    <div class="find">
+      <a href="tel:+920000000000" aria-label="Phone">Ph</a>
+      <a href="mailto:you@example.com" aria-label="Email">@</a>
+      <a href="https://linkedin.com/in/your-username" aria-label="LinkedIn">in</a>
+      <a href="https://github.com/your-username" aria-label="GitHub">Gh</a>
+    </div>
+    <p class="small">Best skills on</p>
+    <div class="chips"><span>WordPress</span><span>Shopify</span><span>Elementor</span><span>Figma</span></div>
+  </div>
+
+  <section id="features"><div class="container">
+    <p class="kicker">Features</p>
+    <h2 class="title">What I Do</h2>
+    <p class="sub">Websites built around your business goals, from first design to final launch.</p>
+    <div class="grid3">
+      <div class="card"><div class="ico">&lt;/&gt;</div><h3>Web Development</h3><p>I create responsive, SEO-friendly, and performance-optimized websites using WordPress, Shopify, Wix, and Webflow with complete customization.</p></div>
+      <div class="card"><div class="ico">S</div><h3>Shopify Customization</h3><p>From theme modifications to advanced Liquid coding and app integrations, I build stores that convert.</p></div>
+      <div class="card"><div class="ico">W</div><h3>WordPress Customization</h3><p>Specialized in Elementor, WooCommerce, and plugin development, building feature-rich, dynamic websites tailored to your business.</p></div>
+      <div class="card"><div class="ico">Ui</div><h3>UI/UX &amp; Web Design</h3><p>I design modern, creative interfaces using Figma, Framer, and Webflow, focusing on usability, clean layouts, and smooth user flow.</p></div>
+      <div class="card"><div class="ico">+</div><h3>Plugin &amp; Theme Development</h3><p>I develop and customize WordPress plugins and themes to add unique functionality, improve performance, and match brand identity.</p></div>
+      <div class="card"><div class="ico">✓</div><h3>Maintenance &amp; Optimization</h3><p>I ensure fast loading, clean structure, and security, helping websites perform their best with technical and SEO setup.</p></div>
+    </div>
+  </div></section>
+
+  <section id="skills"><div class="container">
+    <h2 class="title">My Skills</h2>
+    <p class="sub">Tools and platforms I use every day.</p>
+    <div class="skills" id="skillGrid"></div>
+  </div></section>
+
+  <section id="resume"><div class="container">
+    <h2 class="title">My Resume</h2>
+    <p class="sub">Education and work experience.</p>
+    <div class="resume">
+      <div class="col">
+        <h3>Education</h3>
+        <div class="card item"><div class="row"><h4>BS Computer Science</h4><span class="date">Graduated 2024</span></div><p class="org">Your University, City</p><p>Completed a Bachelor’s degree in Computer Science, gaining hands-on experience in web development, databases, and web technologies.</p></div>
+        <div class="card item"><div class="row"><h4>MS Computer Science</h4><span class="date">Expected 2026</span></div><p class="org">Your University, City</p><p>Pursuing a Master’s in Computer Science with a focus on advanced web technologies, AI, and modern software development.</p></div>
+      </div>
+      <div class="col">
+        <h3>Work Experience</h3>
+        <div class="card item"><div class="row"><h4>WordPress &amp; Shopify Developer</h4><span class="date">2025 – Present</span></div><p class="org">Company name</p><p>Designing and customizing WordPress and Shopify websites tailored to client needs. Implementing responsive, SEO-friendly layouts and integrating APIs.</p></div>
+        <div class="card item"><div class="row"><h4>WordPress Developer</h4><span class="date">2024 – 2025</span></div><p class="org">Company name</p><p>Developed and customized WordPress websites, optimized performance, and collaborated on plugin development.</p></div>
+        <div class="card item"><div class="row"><h4>WordPress &amp; Shopify Developer</h4><span class="date">2023 – 2024</span></div><p class="org">Company name</p><p>Specialized in custom themes, plugins, and cross-platform optimization.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="projects"><div class="container">
+    <h2 class="title">My Projects</h2>
+    <p class="sub">A selection of websites I have built. Add a screenshot to any project to replace the colored tile.</p>
+    <div id="projectList"></div>
+  </div></section>
+</main>
+
+<footer>
+  <div class="container">
+    <h2>Fareeha Batool</h2>
+    <p class="role">WordPress &amp; Shopify Developer</p>
+    <p>I’m available for freelance work. Connect with me via call or email.</p>
+    <p>Phone: <a href="tel:+920000000000">+92 000 0000000</a><br>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+    <p>© 2026. All rights reserved by Fareeha Batool.</p>
+  </div>
+</footer>
+
+<script>
+/* ===== EDIT YOUR CONTENT HERE ===== */
+var skills=[["WordPress","Wp"],["Shopify","Sh"],["Wix","Wx"],["Webflow","Wf"],["Framer","Fr"],["Figma","Fg"],["Elementor","El"],["PHP","Ph"],["HTML","H5"],["CSS","C3"]];
+
+/* Each project: category, name, tag line, description, link, image (optional, e.g. "images/asfaar.jpg") */
+var projects=[
+["WordPress Projects","Asfaar Trading","Trading & Distribution","High-quality tools, machinery and everyday products, clear categories and rich quote forms.","#",""],
+["WordPress Projects","The Denim Goods","Apparel & Quality Goods","Men/Women categories, premium PDPs, and a clean checkout for global retail.","#",""],
+["WordPress Projects","JB Light","Lighting & Interior Design","Quotes, consultations, and full-service projects for the Washington D.C. area.","#",""],
+["WordPress Projects","Yusufir Travel & Tours","Hajj & Umrah Services","Seamless pilgrimage experience with complete travel solutions and personalized support.","#",""],
+["WordPress Projects","NICE Academy","Skill & Path Programs","Comprehensive curriculum, expert mentoring, and resources to excel in competitive exams.","#",""],
+["WordPress Projects","Roha Executive","Digital Marketing Agency","Sustainable operations with a focus on fleet and community-first initiatives.","#",""],
+["WordPress Projects","Experts360","Moving & Insurance Quotes","Moving, home services, and insurance via 300+ partners with instant quotes and bookings.","#",""],
+["WordPress Projects","Taxmax Services","Taxation, Compliance & Accounting","Customized, results-oriented solutions delivered by a skilled team.","#",""],
+["WordPress Projects","MyNutraAdvice","Health & Nutrition Consultancy","Personalized diet plans, wellness guidance, and lifestyle management for healthy living.","#",""],
+["Shopify Stores","Halawa Wax","Beauty & Skincare","Theme tweaks, app integrations, and conversion setup for a smooth buying flow.","#",""],
+["Shopify Stores","Q Naturals","Health & Wellness","Custom sections, SEO enhancements, and speed optimization for an organic brand.","#",""],
+["Shopify Stores","Josephine’s Chicago","Food & Beverage","Production Shopify storefront with a clean checkout and branded product pages.","#",""]
+];
+
+(function(){
+  var g=document.getElementById("skillGrid");
+  g.innerHTML=skills.map(function(s){return '<div class="skill"><b>'+s[1]+'</b>'+s[0]+'</div>'}).join("");
+
+  var out="",cur="",i=0;
+  projects.forEach(function(p){
+    if(p[0]!==cur){
+      if(cur)out+='</div>';
+      cur=p[0];out+='<h3 class="cat">'+cur+'</h3><div class="grid3">';
+    }
+    var h=(i*47+170)%360;i++;
+    var bg=p[5]?'background-image:url('+p[5]+')':'background-image:linear-gradient(135deg,hsl('+h+' 55% 32%),hsl('+((h+40)%360)+' 55% 16%))';
+    var label=p[5]?'':p[1];
+    out+='<article class="card proj"><div class="thumb" style="'+bg+'" role="img" aria-label="'+p[1]+' preview">'+label+'</div>'
+      +'<div class="body"><span class="badge">'+p[0].split(" ")[0]+'</span><h3>'+p[1]+'</h3><p class="tag">'+p[2]+'</p><p>'+p[3]+'</p>'
+      +'<a class="btn ghost" href="'+p[4]+'" target="_blank" rel="noopener">Visit site</a></div></article>';
+  });
+  out+='</div>';
+  document.getElementById("projectList").innerHTML=out;
+})();
+</script>
+</body>
+</html>
