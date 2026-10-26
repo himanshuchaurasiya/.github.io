@@ -20,6 +20,8 @@ html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--font);padding-bottom:env(safe-area-inset-bottom,0px)}
 a{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+img{max-width:100%}
+.i{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .container{max-width:1120px;margin:0 auto;padding:0 24px}
 section{padding:80px 0}
 .title{text-align:center;margin:0 0 8px;font-size:clamp(1.9rem,4vw,2.5rem);font-weight:700;letter-spacing:-.01em}
@@ -29,30 +31,38 @@ section{padding:80px 0}
 header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:600}
-.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:.9rem}
+.avatar{position:relative;overflow:hidden;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:var(--on-accent);font-weight:700;font-size:.9rem;flex:none}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .links{display:flex;gap:22px;align-items:center;font-size:.9rem;color:var(--muted)}
 .links a:hover{color:var(--text)}
-.btn{display:inline-block;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:.9rem;padding:9px 18px;border-radius:999px;border:0;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:var(--on-accent);font-weight:600;font-size:.9rem;padding:9px 18px;border-radius:999px;border:0;cursor:pointer}
 .links .btn{color:var(--on-accent)}
 .btn:hover{filter:brightness(1.1)}
-.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);width:100%;text-align:center}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);width:100%}
 .btn.ghost:hover{background:var(--accent);color:var(--on-accent)}
 
-.hero{text-align:center;padding:96px 0 72px}
-.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.15;margin:8px 0 18px;font-weight:700;letter-spacing:-.02em}
+.hero{text-align:center;padding:80px 0 72px;position:relative}
+.hero::before{content:"";position:absolute;inset:0 -20% auto;height:420px;background:radial-gradient(ellipse at 50% 0,rgba(34,211,166,.14),transparent 65%);pointer-events:none}
+.photo{position:relative;width:132px;height:132px;margin:0 auto 22px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.photo span,.photo img{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;background:var(--card);font-size:2.6rem;font-weight:700;color:var(--accent);object-fit:cover}
+.photo img{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.15;margin:8px 0 18px;font-weight:700;letter-spacing:-.02em;position:relative}
 .hero h1 em{font-style:normal;color:var(--accent)}
-.hero p{max-width:60ch;margin:0 auto 32px;color:var(--muted)}
-.find{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.find a{width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-size:.8rem;font-weight:600;color:var(--accent)}
-.find a:hover{border-color:var(--accent)}
+.hero p{max-width:60ch;margin:0 auto 32px;color:var(--muted);position:relative}
+.find{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px;position:relative}
+.find a{width:46px;height:46px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);transition:transform .15s,border-color .15s}
+.find a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.find .i{width:20px;height:20px}
 .hero p.small,.small{font-size:.8rem;color:var(--muted);margin:0 0 10px}
-.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.82rem}
+.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;position:relative}
+.chips span{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 14px 5px 8px;font-size:.82rem}
+.chips img{width:18px;height:18px}
 
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s}
 .card:hover{border-color:var(--accent)}
-.ico{width:44px;height:44px;border-radius:12px;background:var(--card2);color:var(--accent);display:grid;place-items:center;font-weight:700;margin-bottom:14px}
+.ico{width:48px;height:48px;border-radius:12px;background:var(--card2);color:var(--accent);display:grid;place-items:center;margin-bottom:14px}
+.ico .i{width:24px;height:24px}
 .card h3{margin:0 0 8px;font-size:1.1rem}
 .card p{margin:0;color:var(--muted);font-size:.92rem}
 
@@ -64,20 +74,27 @@ header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.85);backdrop-f
 .stat span{font-size:.82rem;color:var(--muted)}
 
 .skills{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.skill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 10px;text-align:center;font-size:.85rem;font-weight:500}
-.skill b{display:grid;place-items:center;width:42px;height:42px;margin:0 auto 10px;border-radius:12px;background:var(--card2);color:var(--accent2);font-size:.85rem}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 10px;text-align:center;font-size:.85rem;font-weight:500;transition:border-color .2s}
+.skill:hover{border-color:var(--accent)}
+.skill .lg{display:grid;place-items:center;width:48px;height:48px;margin:0 auto 10px;border-radius:12px;background:var(--card2);color:var(--accent2);font-weight:700;font-size:.85rem}
+.skill img{width:28px;height:28px}
 
 .resume{display:grid;grid-template-columns:1fr 1fr;gap:56px;position:relative}
 .resume::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(var(--accent),transparent)}
-.col h3{font-size:1.4rem;margin:0 0 20px}
+.col h3{font-size:1.4rem;margin:0 0 20px;display:flex;align-items:center;gap:10px}
+.col h3 .i{color:var(--accent)}
 .item{margin-bottom:18px}
 .item .row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
 .item h4{margin:0;font-size:1rem}
 .date{font-size:.78rem;color:var(--accent);background:var(--card2);border-radius:999px;padding:2px 12px;white-space:nowrap;align-self:flex-start}
 .item .org{color:var(--accent2);font-size:.85rem;margin:0 0 6px}
 
+.cat{display:flex;align-items:center;gap:10px;font-size:1.3rem;margin:48px 0 20px}
+.cat .i{color:var(--accent)}
 .proj{padding:0;overflow:hidden;display:flex;flex-direction:column}
-.thumb{aspect-ratio:16/9;background-size:cover;background-position:top;display:grid;place-items:center;font-weight:700;font-size:1.3rem;color:rgba(255,255,255,.85);text-align:center;padding:10px}
+.thumb{position:relative;aspect-ratio:16/10;overflow:hidden;display:grid;place-items:center;font-weight:700;font-size:1.2rem;color:rgba(255,255,255,.85);text-align:center;padding:10px;border-bottom:1px solid var(--line)}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}
+.proj:hover .thumb img{transform:scale(1.04)}
 .body{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}
 .badge{align-self:flex-start;font-size:.7rem;font-weight:600;background:var(--card2);color:var(--accent);border-radius:6px;padding:1px 9px}
 .body h3{margin:2px 0 0;font-size:1.02rem}
@@ -88,42 +105,67 @@ footer{border-top:1px solid var(--line);text-align:center;padding:48px 0 40px;co
 footer h2{color:var(--text);margin:0 0 4px}
 footer .role{color:var(--accent);margin:0 0 14px}
 footer a{color:var(--text)}
+footer .find{margin:16px 0}
 
 @media (max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}.skills{grid-template-columns:repeat(3,1fr)}.about{grid-template-columns:1fr}}
 @media (max-width:700px){
   .links a:not(.btn){display:none}
   .grid3{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}
   .resume{grid-template-columns:1fr;gap:32px}.resume::before{display:none}
-  section{padding:56px 0}.hero{padding:64px 0 48px}
+  section{padding:56px 0}.hero{padding:48px 0 48px}
 }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
+<!-- Icon set -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+</svg>
+
 <header>
   <div class="container nav">
-    <a class="brand" href="#home"><span class="avatar">H</span>Himanshu</a>
+    <a class="brand" href="#home">
+      <span class="avatar">H<img src="https://github.com/himanshuchaurasiya.png?size=80" alt="" onerror="this.remove()"></span>Himanshu
+    </a>
     <nav class="links" aria-label="Main">
       <a href="#home">Home</a><a href="#about">About</a><a href="#features">Services</a><a href="#skills">Skills</a><a href="#resume">Experience</a><a href="#projects">Projects</a>
-      <a class="btn" href="cv.pdf" download>Download CV</a>
+      <a class="btn" href="cv.pdf" download><svg class="i"><use href="#i-download"/></svg>Download CV</a>
     </nav>
   </div>
 </header>
 
 <main id="home">
   <div class="container hero">
+    <!-- Profile photo: uses your GitHub photo. To use another one, upload images/profile.jpg and change the src below. -->
+    <div class="photo"><span>H</span><img src="https://github.com/himanshuchaurasiya.png?size=300" alt="Himanshu Chaurasiya" onerror="this.remove()"></div>
     <p class="kicker">Welcome to my world</p>
     <h1>Hi, I’m <em>Himanshu Chaurasiya</em>, a WordPress Developer.</h1>
     <p>I’m a senior WordPress developer with 5+ years of experience building custom themes, plugins, and WooCommerce stores that are fast, scalable, and easy to use.</p>
     <p class="small">Find me on</p>
     <div class="find">
-      <a href="tel:+916306563967" aria-label="Phone">Ph</a>
-      <a href="mailto:himanshuchaurasia195@gmail.com" aria-label="Email">@</a>
-      <a href="https://linkedin.com/in/your-linkedin" aria-label="LinkedIn">in</a>
-      <a href="https://github.com/himanshuchaurasiya" aria-label="GitHub">Gh</a>
+      <a href="tel:+916306563967" aria-label="Phone"><svg class="i"><use href="#i-phone"/></svg></a>
+      <a href="mailto:himanshuchaurasia195@gmail.com" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a>
+      <a href="https://linkedin.com/in/your-linkedin" aria-label="LinkedIn"><svg class="i"><use href="#i-linkedin"/></svg></a>
+      <a href="https://github.com/himanshuchaurasiya" aria-label="GitHub"><svg class="i"><use href="#i-github"/></svg></a>
     </div>
     <p class="small">Best skills on</p>
-    <div class="chips"><span>WordPress</span><span>WooCommerce</span><span>Plugin Development</span><span>PHP</span><span>Elementor</span></div>
+    <div class="chips" id="chips"></div>
   </div>
 
   <section id="about"><div class="container">
@@ -150,12 +192,12 @@ footer a{color:var(--text)}
     <h2 class="title">What I Do</h2>
     <p class="sub">Websites and online stores built around your business goals.</p>
     <div class="grid3">
-      <div class="card"><div class="ico">Wp</div><h3>WordPress Development</h3><p>I build and manage WordPress websites with clean code, responsive layouts, and a smooth experience for your visitors.</p></div>
-      <div class="card"><div class="ico">Wc</div><h3>WooCommerce Development</h3><p>Custom product pages, carts, checkout flows, and payment options that turn visitors into customers.</p></div>
-      <div class="card"><div class="ico">&lt;/&gt;</div><h3>Custom Themes &amp; Plugins</h3><p>I create and customize themes and plugins with custom hooks, filters, and shortcodes to match your exact needs.</p></div>
-      <div class="card"><div class="ico">⚡</div><h3>Performance &amp; SEO</h3><p>Faster loading through caching, code cleanup, and image optimization, plus SEO best practices for better ranking.</p></div>
-      <div class="card"><div class="ico">El</div><h3>Page Builders</h3><p>Responsive, good-looking layouts built with Elementor and WP Bakery, tailored to client requirements.</p></div>
-      <div class="card"><div class="ico">✓</div><h3>Maintenance &amp; Fixes</h3><p>I troubleshoot technical issues, handle updates, and keep your site secure and running smoothly.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-code"/></svg></div><h3>WordPress Development</h3><p>I build and manage WordPress websites with clean code, responsive layouts, and a smooth experience for your visitors.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-cart"/></svg></div><h3>WooCommerce Development</h3><p>Custom product pages, carts, checkout flows, and payment options that turn visitors into customers.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-box"/></svg></div><h3>Custom Themes &amp; Plugins</h3><p>I create and customize themes and plugins with custom hooks, filters, and shortcodes to match your exact needs.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-zap"/></svg></div><h3>Performance &amp; SEO</h3><p>Faster loading through caching, code cleanup, and image optimization, plus SEO best practices for better ranking.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-layout"/></svg></div><h3>Page Builders</h3><p>Responsive, good-looking layouts built with Elementor and WP Bakery, tailored to client requirements.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#i-tool"/></svg></div><h3>Maintenance &amp; Fixes</h3><p>I troubleshoot technical issues, handle updates, and keep your site secure and running smoothly.</p></div>
     </div>
   </div></section>
 
@@ -166,17 +208,18 @@ footer a{color:var(--text)}
   </div></section>
 
   <section id="resume"><div class="container">
+    <p class="kicker">Over 5+ years of experience</p>
     <h2 class="title">My Experience</h2>
     <p class="sub">Where I have worked and what I have achieved.</p>
     <div class="resume">
       <div class="col">
-        <h3>Work Experience</h3>
+        <h3><svg class="i"><use href="#i-brief"/></svg>Work Experience</h3>
         <div class="card item"><div class="row"><h4>Senior WordPress Developer</h4><span class="date">Dec 2022 – Present</span></div><p class="org">ThinkBiz Solutions Pvt Ltd, Noida</p><p>Build and customize WordPress and WooCommerce websites, create custom functionality, resolve technical issues, handle maintenance, and train and guide junior developers.</p></div>
         <div class="card item"><div class="row"><h4>Analyst Programmer</h4><span class="date">Nov 2021 – Dec 2022</span></div><p class="org">EbizOn Netinfo Pvt. Ltd, Noida</p><p>Developed and maintained WordPress websites, built custom themes and plugins, and handled client meetings.</p></div>
         <div class="card item"><div class="row"><h4>WordPress Developer</h4><span class="date">Nov 2020 – Nov 2021</span></div><p class="org">Synergy Top Softlab Pvt. Ltd, Indore</p><p>Developed and customized WordPress plugins and built strong skills in PHP, WooCommerce, JavaScript, and Ajax.</p></div>
       </div>
       <div class="col">
-        <h3>Achievements</h3>
+        <h3><svg class="i"><use href="#i-award"/></svg>Achievements</h3>
         <div class="card item"><div class="row"><h4>Best Performance Award</h4></div><p>Recognized for managing multiple projects at the same time, meeting deadlines, and handling client communication.</p></div>
         <div class="card item"><div class="row"><h4>Direct client appreciation</h4></div><p>Earned praise straight from clients, which was acknowledged by management.</p></div>
         <div class="card item"><div class="row"><h4>How I work</h4></div><p>Git-based workflows, Jira-driven planning, and unit testing to catch bugs early and keep code quality high.</p></div>
@@ -196,6 +239,12 @@ footer a{color:var(--text)}
     <h2>Himanshu Chaurasiya</h2>
     <p class="role">Senior WordPress Developer</p>
     <p>I’m open to freelance work and full-time roles. Connect with me by call or email.</p>
+    <div class="find">
+      <a href="tel:+916306563967" aria-label="Phone"><svg class="i"><use href="#i-phone"/></svg></a>
+      <a href="mailto:himanshuchaurasia195@gmail.com" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a>
+      <a href="https://linkedin.com/in/your-linkedin" aria-label="LinkedIn"><svg class="i"><use href="#i-linkedin"/></svg></a>
+      <a href="https://github.com/himanshuchaurasiya" aria-label="GitHub"><svg class="i"><use href="#i-github"/></svg></a>
+    </div>
     <p>Phone: <a href="tel:+916306563967">+91 63065 63967</a><br>Email: <a href="mailto:himanshuchaurasia195@gmail.com">himanshuchaurasia195@gmail.com</a></p>
     <p>© 2026. All rights reserved by Himanshu Chaurasiya.</p>
   </div>
@@ -203,12 +252,26 @@ footer a{color:var(--text)}
 
 <script>
 /* ===== EDIT YOUR CONTENT HERE ===== */
-var skills=[["WordPress","Wp"],["WooCommerce","Wc"],["PHP","Ph"],["JavaScript","Js"],["jQuery","jQ"],["MySQL","My"],["Elementor","El"],["WP Bakery","Wb"],["HTML5","H5"],["CSS","C3"],["Git","Gt"],["Jira","Ji"]];
 
-/* Each project: category, name, tag line, description, link, image (optional, e.g. "images/northcharge.jpg") */
+/* Logo helpers: dv() = Devicon colored logo, si() = Simple Icons logo in a chosen color */
+function dv(n){return "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/"+n+"/"+n+"-original.svg"}
+function si(s,c){return "https://cdn.simpleicons.org/"+s+"/"+c}
+
+/* Skills: name, short fallback text, logo URL */
+var skills=[
+["WordPress","Wp",dv("wordpress")],["WooCommerce","Wc",si("woocommerce","A77BC0")],["PHP","Ph",dv("php")],
+["JavaScript","Js",dv("javascript")],["jQuery","jQ",dv("jquery")],["MySQL","My",dv("mysql")],
+["Elementor","El",si("elementor","E2498A")],["HTML5","H5",dv("html5")],["CSS3","C3",dv("css3")],
+["Git","Gt",dv("git")],["Jira","Ji",si("jira","4C9AFF")],["GitHub","Gh",si("github","E6ECF8")]
+];
+var chips=[["WordPress",dv("wordpress")],["WooCommerce",si("woocommerce","A77BC0")],["PHP",dv("php")],["Elementor",si("elementor","E2498A")]];
+
+/* Projects: group, name, tag line, description, link, screenshot (optional).
+   Leave the screenshot as "" to get an automatic live screenshot of the link.
+   For your own image, upload it to the images folder and write e.g. "images/northcharge.jpg" */
 var projects=[
-["WordPress Projects","North Charge","WooCommerce store, Canada","Online store for EV charging products with custom listings, cart, and checkout, built for speed and secure transactions.","https://northcharge.ca/",""],
-["WordPress Projects","DeGraff Stables Marketplace","WooCommerce marketplace, USA","Marketplace for online horse sales with secure checkout, installment payments, and streamlined order management.","https://degraffstablesmarketplace.com/",""],
+["WooCommerce Projects","North Charge","WooCommerce store, Canada","Online store for EV charging products with custom listings, cart, and checkout, built for speed and secure transactions.","https://northcharge.ca/",""],
+["WooCommerce Projects","DeGraff Stables Marketplace","WooCommerce marketplace, USA","Marketplace for online horse sales with secure checkout, installment payments, and streamlined order management.","https://degraffstablesmarketplace.com/",""],
 ["WordPress Projects","Qazi & Co Solicitors","Elementor website, UK","Website for a regulated law firm covering personal injury, immigration, family law, and litigation, built for clear navigation.","https://qazisolicitors.com/",""],
 ["WordPress Projects","Beep India","Government project","Knowledge hub for energy-efficient buildings with case studies, media outreach, a discussion forum, and technical resources.","https://www.beepindia.org/",""],
 ["WordPress Projects","Your next project","Add category or client type","Write one or two lines about what the project does and what you built.","#",""],
@@ -216,14 +279,29 @@ var projects=[
 ];
 
 (function(){
-  document.getElementById("skillGrid").innerHTML=skills.map(function(s){return '<div class="skill"><b>'+s[1]+'</b>'+s[0]+'</div>'}).join("");
-  var out='<div class="grid3">';
-  projects.forEach(function(p,i){
-    var h=(i*47+170)%360;
-    var bg=p[5]?'background-image:url('+p[5]+')':'background-image:linear-gradient(135deg,hsl('+h+' 55% 32%),hsl('+((h+40)%360)+' 55% 16%))';
-    out+='<article class="card proj"><div class="thumb" style="'+bg+'" role="img" aria-label="'+p[1]+' preview">'+(p[5]?'':p[1])+'</div>'
+  function logo(s){
+    return '<span class="lg">'+s[1]+'<img src="'+s[2]+'" alt="'+s[0]+' logo" loading="lazy" style="position:absolute;opacity:0" onload="this.style.opacity=1;this.style.position=\'static\';this.previousSibling&&(this.parentNode.firstChild.nodeValue=\'\')"></span>';
+  }
+  document.getElementById("skillGrid").innerHTML=skills.map(function(s){
+    return '<div class="skill">'+logo(s)+s[0]+'</div>';
+  }).join("");
+  document.getElementById("chips").innerHTML=chips.map(function(c){
+    return '<span><img src="'+c[1]+'" alt="" onerror="this.remove()">'+c[0]+'</span>';
+  }).join("");
+
+  var out="",cur="",i=0;
+  projects.forEach(function(p){
+    if(p[0]!==cur){
+      if(cur)out+='</div>';
+      cur=p[0];
+      out+='<h3 class="cat"><svg class="i"><use href="#i-folder"/></svg>'+cur+'</h3><div class="grid3">';
+    }
+    var h=(i*47+170)%360;i++;
+    var shot=p[5]||(p[4].indexOf("http")===0?"https://s.wordpress.com/mshots/v1/"+encodeURIComponent(p[4])+"?w=800&h=500":"");
+    var img=shot?'<img src="'+shot+'" alt="Screenshot of '+p[1]+'" loading="lazy" onerror="this.remove()">':'';
+    out+='<article class="card proj"><div class="thumb" style="background-image:linear-gradient(135deg,hsl('+h+' 55% 32%),hsl('+((h+40)%360)+' 55% 16%))">'+p[1]+img+'</div>'
       +'<div class="body"><span class="badge">'+p[0].split(" ")[0]+'</span><h3>'+p[1]+'</h3><p class="tag">'+p[2]+'</p><p>'+p[3]+'</p>'
-      +'<a class="btn ghost" href="'+p[4]+'" target="_blank" rel="noopener">Visit site</a></div></article>';
+      +'<a class="btn ghost" href="'+p[4]+'" target="_blank" rel="noopener"><svg class="i"><use href="#i-link"/></svg>Visit site</a></div></article>';
   });
   document.getElementById("projectList").innerHTML=out+'</div>';
 })();
